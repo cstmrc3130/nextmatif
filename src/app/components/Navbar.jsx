@@ -1,53 +1,68 @@
-const Navbar = () =>
-{
+"use client";
+import React, { useState } from "react";
+
+const Navbar = () => {
+    const [open, setOpen] = useState(false);
+
     return (
-        <header class="bg-gray-50">
-            <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-                <div class="sm:flex sm:items-center sm:justify-between">
-                    <div class="text-center sm:text-left">
-                        <h1 class="text-2xl font-bold text-gray-900 sm:text-3xl">
-                            Welcome Back, Barry!
-                        </h1>
-
-                        <p class="mt-1.5 text-sm text-gray-500">
-                            Let's write a new blog post! 🎉
-                        </p>
+        <header className={`flex items-center justify-center w-full bg-white`}>
+            <div className="container">
+                <div className="relative flex items-center justify-between -mx-4">
+                    <div className="max-w-full px-4 w-60">
+                        <a href="/#" className="block w-full py-5">
+                            <img src="https://cdn.tailgrids.com/1.0/assets/images/logo/logo.svg" alt="logo" className="w-full" />
+                        </a>
                     </div>
+                    <div className="flex items-center justify-between w-full px-4">
+                        <div>
+                            <button onClick={() => setOpen(!open)} id="navbarToggler" className={`${open && "navbarTogglerActive"} absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] ring-indigo-300 focus:ring-2 lg:hidden`}>
+                                <span className="relative my-[6px] block h-[2px] w-[30px] bg-black"></span>
+                                <span className="relative my-[6px] block h-[2px] w-[30px] bg-black"></span>
+                                <span className="relative my-[6px] block h-[2px] w-[30px] bg-black"></span>
+                            </button>
+                            <nav id="navbarCollapse" className={`absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-white py-5 px-6 shadow lg:static lg:block lg:w-full lg:max-w-full lg:shadow-none ${!open && "hidden"} `}>
+                                <ul className="block lg:flex">
+                                    <ListItem navItemStyles="text-dark hover:text-indigo-300" NavLink="/#">
+                                        Home
+                                    </ListItem>
+                                    <ListItem navItemStyles="text-dark hover:text-indigo-300" NavLink="/#">
+                                        Payment
+                                    </ListItem>
+                                    <ListItem navItemStyles="text-dark hover:text-indigo-300" NavLink="/#">
+                                        About
+                                    </ListItem>
+                                    <ListItem navItemStyles="text-dark hover:text-indigo-300" NavLink="/#">
+                                        Blog
+                                    </ListItem>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div className="justify-end hidden pr-16 sm:flex lg:pr-0">
+                            <a href="/#" className="py-3 text-base font-medium px-7 text-dark hover:text-indigo-300">
+                                Sign in
+                            </a>
 
-                    <div class="mt-4 flex flex-col gap-4 sm:mt-0 sm:flex-row sm:items-center">
-                        <button
-                            class="inline-flex items-center justify-center gap-1.5 rounded-lg border border-gray-200 bg-white px-5 py-3 text-gray-500 transition hover:text-gray-700 focus:outline-none focus:ring"
-                            type="button"
-                        >
-                            <span class="text-sm font-medium"> View Website </span>
-
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="h-4 w-4"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                stroke-width="2"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                            />
-                            </svg>
-                        </button>
-
-                        <button
-                            class="block rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring"
-                            type="button"
-                        >
-                            Create Post
-                        </button>
+                            <a href="/#" className="py-3 text-base font-medium text-white rounded-lg bg-teal-300 px-7 hover:bg-opacity-90">
+                                Sign Up
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </header>
-    )
-}
+    );
+};
 
 export default Navbar;
+
+const ListItem = ({ children, navItemStyles, NavLink }) => {
+    return (
+        <>
+            <li>
+                <a href={NavLink} className={`flex py-2 text-base font-medium lg:ml-12 lg:inline-flex ${navItemStyles}`}>
+                    {children}
+                </a>
+            </li>
+        </>
+    );
+};
