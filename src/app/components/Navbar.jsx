@@ -1,51 +1,65 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-const Navbar = () => {
+const Navbar = () =>
+{
     const [open, setOpen] = useState(false);
+    const navbarRef = useRef(null);
+
+    useEffect(() =>
+    {
+        const handler = (e) =>
+        {
+            if (!navbarRef.current.contains(e.target))
+            {
+                setOpen(false);
+            }
+        };
+        document.addEventListener("click", handler);
+
+        return () =>
+        {
+            document.removeEventListener("click", handler);
+        };
+    });
 
     return (
-        <header className={`flex items-center justify-center w-full bg-white`}>
+        <header className={`flex items-center justify-center w-full `}>
             <div className="container">
-                <div className="relative flex items-center justify-between -mx-4">
-                    <div className="max-w-full px-4 w-60">
+                <div className="relative flex items-center justify-between mx-4">
+                    <div className="max-w-full px-4">
                         <a href="/#" className="block w-full py-5">
-                            <img src="https://cdn.tailgrids.com/1.0/assets/images/logo/logo.svg" alt="logo" className="w-full" />
+                            <img src="https://himatifusu.org/img/logo/white/white_100.png" className="w-14 h-14" />
                         </a>
                     </div>
-                    <div className="flex items-center justify-between w-full px-4">
-                        <div>
-                            <button onClick={() => setOpen(!open)} id="navbarToggler" className={`${open && "navbarTogglerActive"} absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] ring-indigo-300 focus:ring-2 lg:hidden`}>
-                                <span className="relative my-[6px] block h-[2px] w-[30px] bg-black"></span>
-                                <span className="relative my-[6px] block h-[2px] w-[30px] bg-black"></span>
-                                <span className="relative my-[6px] block h-[2px] w-[30px] bg-black"></span>
-                            </button>
-                            <nav id="navbarCollapse" className={`absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-white py-5 px-6 shadow lg:static lg:block lg:w-full lg:max-w-full lg:shadow-none ${!open && "hidden"} `}>
-                                <ul className="block lg:flex">
-                                    <ListItem navItemStyles="text-dark hover:text-indigo-300" NavLink="/#">
-                                        Home
-                                    </ListItem>
-                                    <ListItem navItemStyles="text-dark hover:text-indigo-300" NavLink="/#">
-                                        Payment
-                                    </ListItem>
-                                    <ListItem navItemStyles="text-dark hover:text-indigo-300" NavLink="/#">
-                                        About
-                                    </ListItem>
-                                    <ListItem navItemStyles="text-dark hover:text-indigo-300" NavLink="/#">
-                                        Blog
-                                    </ListItem>
-                                </ul>
-                            </nav>
-                        </div>
-                        <div className="justify-end hidden pr-16 sm:flex lg:pr-0">
-                            <a href="/#" className="py-3 text-base font-medium px-7 text-dark hover:text-indigo-300">
-                                Sign in
-                            </a>
-
-                            <a href="/#" className="py-3 text-base font-medium text-white rounded-lg bg-teal-300 px-7 hover:bg-opacity-90">
-                                Sign Up
-                            </a>
-                        </div>
+                    <div ref={navbarRef} className="flex items-center justify-between w-full px-4" onClick={() => console.log("Hello")}>
+                        <nav id="navbarCollapse" className={`absolute top-[80%] left-0 right-0 w-full rounded-lg py-5 px-6 shadow z-10 bg-white lg:bg-transparent lg:basis-full lg:static lg:block lg:w-full lg:max-w-full lg:shadow-none ${!open && "hidden"} `}>
+                            <ul className="block lg:flex lg:items-center lg:justify-end gap-x-16 whitespace-nowrap">
+                                <ListItem navItemStyles="text-black lg:text-white hover:bg-sky-600 hover:text-white lg:hover:bg-transparent lg:hover:text-sky-600 rounded-md px-4 lg:px-0" NavLink="/#">
+                                    Home
+                                </ListItem>
+                                <ListItem navItemStyles="text-black lg:text-white hover:bg-sky-600 hover:text-white lg:hover:bg-transparent lg:hover:text-sky-600 rounded-md px-4 lg:px-0" NavLink="/#">
+                                    Divisi
+                                </ListItem>
+                                <ListItem navItemStyles="text-black lg:text-white hover:bg-sky-600 hover:text-white lg:hover:bg-transparent lg:hover:text-sky-600 rounded-md px-4 lg:px-0" NavLink="/#">
+                                    Pengurus Lama
+                                </ListItem>
+                                <ListItem navItemStyles="text-black lg:text-white hover:bg-sky-600 hover:text-white lg:hover:bg-transparent lg:hover:text-sky-600 rounded-md px-4 lg:px-0" NavLink="/#">
+                                    Himatif Shop
+                                </ListItem>
+                                <ListItem navItemStyles="text-black lg:text-white hover:bg-sky-600 hover:text-white lg:hover:bg-transparent lg:hover:text-sky-600 rounded-md px-4 lg:px-0" NavLink="/#">
+                                    Himatif Konseling
+                                </ListItem>
+                                <ListItem navItemStyles="text-black lg:text-white hover:bg-sky-600 hover:text-white lg:hover:bg-transparent lg:hover:text-sky-600 rounded-md px-4 lg:px-0" NavLink="/#">
+                                    Berita
+                                </ListItem>
+                            </ul>
+                        </nav>
+                        <button onClick={() => setOpen(!open)} id="navbarToggler" className={`${open && "navbarTogglerActive"} absolute right-4 top-1/2 block z-10  -translate-y-1/2 rounded-lg px-3 py-[6px] ring-indigo-300 focus:ring-2 lg:hidden`}>
+                            <span className={`relative my-[6px] block h-[2px] w-[30px] bg-white transition-all ${open && "top-[7px] rotate-[45deg]"}`}></span>
+                            <span className={`relative my-[6px] block h-[2px] w-[30px] bg-white transition-all ${open && "opacity-0"}`}></span>
+                            <span className={`relative my-[6px] block h-[2px] w-[30px] bg-white transition-all ${open && "-top-2 -rotate-[45deg]"}`}></span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -55,11 +69,12 @@ const Navbar = () => {
 
 export default Navbar;
 
-const ListItem = ({ children, navItemStyles, NavLink }) => {
+const ListItem = ({ children, navItemStyles, NavLink }) =>
+{
     return (
         <>
             <li>
-                <a href={NavLink} className={`flex py-2 text-base font-medium lg:ml-12 lg:inline-flex ${navItemStyles}`}>
+                <a href={NavLink} className={`flex py-2 text-lg font-bold ${navItemStyles}`}>
                     {children}
                 </a>
             </li>

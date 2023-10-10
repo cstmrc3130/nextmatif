@@ -1,3 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+.swiper-wrapper
+{
+    transition-timing-function: linear !important;
+}
+
+/* .swiper
+{
+    animation: slidesUp 1.75s;
+} */
+
+header
+{
+    animation: slidesDown 1.75s;
+}
+
+@keyframes slidesDown {
+    from{
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+/* 
+@keyframes slidesUp {
+    from{
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+} */
