@@ -7,7 +7,7 @@ export default function Home()
 {
     return (
         <>
-            <img src={`./hero-bg.jpg`} className={`-z-10 fixed w-screen h-screen brightness-50`} />
+            <img src={`./hero-bg.jpg`} className={`-z-10 object-cover fixed w-screen h-screen brightness-50`} />
             <Navbar />
             <section className=" text-white">
                 <div
