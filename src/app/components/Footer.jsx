@@ -14,7 +14,7 @@ const Footer = async () =>
     await showLoader();
 
     return (
-        <Swiper modules={[Autoplay, FreeMode]} autoplay={{ enabled: true, delay: 0, pauseOnMouseEnter: true, disableOnInteraction: false,}} freeMode={{ enabled: true, minimumVelocity: 0.02, momentum: true }} loop={{ enabled: true }} spaceBetween={0} speed={5000} slidesPerView={"3"} initialSlide={[1, 2, 3]} breakpoints={{ 480: { slidesPerView: 1 }, 768: { slidesPerView: 2 }, 1020: { slidesPerView: 3} }}>
+        <Swiper className={`z-0`} modules={[Autoplay, FreeMode]} autoplay={{ enabled: true, delay: 0, pauseOnMouseEnter: true, disableOnInteraction: false,}} freeMode={{ enabled: true, minimumVelocity: 0.02, momentum: true }} loop={{ enabled: true }} spaceBetween={0} speed={5000} slidesPerView={"3"} initialSlide={[1, 2, 3]} breakpoints={{ 480: { slidesPerView: 1 }, 768: { slidesPerView: 2 }, 1020: { slidesPerView: 3} }}>
             <SwiperSlide className={`p-2 cursor-pointer`}>
                 <div className="flex items-center p-4 bg-white rounded hover:shadow-sky-200 hover:shadow-md hover:-translate-y-1 transition-all">
                     <div className="flex flex-shrink-0 items-center justify-center bg-sky-200 h-16 w-16 rounded">

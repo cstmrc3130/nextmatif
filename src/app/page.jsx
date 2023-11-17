@@ -12,7 +12,7 @@ export default function Home()
             
             <Navbar/>
 
-            <section className="text-white relative h-screen container mx-auto px-4 py-8 sm:py-12 sm:px-6 lg:py-16 lg:px-8" >
+            <section className="text-white relative z-0 h-screen container mx-auto px-4 py-8 sm:py-12 sm:px-6 lg:py-16 lg:px-8" >
                 <div className="mx-auto text-center absolute inset-0 flex flex-col justify-center items-center">
                     <h2 className="text-4xl font-bold sm:text-6xl">Selamat Datang di Website HIMATIF USU </h2>
                     <p className="mt-4 text-2xl sm:text-3xl">
