@@ -45,12 +45,6 @@ const ListItem = ({ children, navItemStyles, }) =>
 export default function Navbar()
 {
     let pathname = usePathname() || "/";
-
-    if (pathname.includes("/writing/"))
-    {
-        pathname = "/writing";
-    }
-
     const [hoveredPath, setHoveredPath] = useState(pathname);
     const [open, setOpen] = useState(false);
     const navbarRef = useRef(0);
@@ -100,7 +94,7 @@ export default function Navbar()
                                         <ListItem navItemStyles="flex lg:py-2 text-lg font-bold rounded-md lg:px-0" key={item.path} >
                                             <Link className={`basis-full px-4 py-2 rounded-md text-sm lg:text-base relative no-underline duration-300 ease-in hover:text-zinc-100 text-zinc-700 ${isActive ? "lg:text-zinc-100" : "lg:text-zinc-300/80"}`} data-active={isActive} href={item.path} onMouseOver={() => setHoveredPath(item.path)} onMouseLeave={() => setHoveredPath(pathname)}>
                                                 <span>{item.name}</span>
-                                                {item.path === hoveredPath && (<motion.div className="absolute bottom-0 left-0 h-full w-full bg-sky-400 rounded-md -z-10" layoutId="navbar" aria-hidden="true" style={{ width: "100%", }} transition={{ type: "spring", bounce: 0.25, stiffness: 130, damping: 9, duration: 0.3, }} />)}
+                                                {item.path === hoveredPath && (<motion.div className="absolute bottom-0 left-0 h-full w-full bg-sky-400 rounded-md -z-10" layoutId="navbar" aria-hidden="true" style={{ width: "100%", }} transition={{ type: "tween", bounce: 0.05, stiffness: 10, damping: 1, duration: 0.3, }} />)}
                                             </Link>
                                         </ListItem>
                                     );
