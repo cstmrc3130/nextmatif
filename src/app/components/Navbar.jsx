@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import { animate } from "motion"
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -58,11 +59,11 @@ export default function Navbar()
             if (scrollPercentage >= 1)
             {
                 navbarRef.current.classList.remove("pt-5")
-                navbarRef.current.classList.add("shadow-sm", "backdrop-blur-md", "pt-3")
+                navbarRef.current.classList.add("shadow-sm", "backdrop-blur-sm", "pt-3")
             }
             else
             {
-                navbarRef.current.classList.remove("shadow-sm", "backdrop-blur-md", "pt-3")
+                navbarRef.current.classList.remove("shadow-sm", "backdrop-blur-sm", "pt-3")
                 navbarRef.current.classList.add("pt-5")
             }
         };
@@ -80,9 +81,9 @@ export default function Navbar()
             <div className={`fixed z-10 inset-0 h-screen w-full backdrop-blur-sm lg:hidden ${!open && `hidden`}`}></div>
             <header ref={navbarRef} className={`flex fixed z-20 items-center justify-center w-full pt-5 transition-all duration-500`}>
                 <nav className="container">
-                    <div className="relative flex items-center justify-between mx-4 lg:mx-0">
+                    <div className="relative flex items-center justify-between mx-4 lg:mx-20">
                         <a href="/" className="block">
-                            <img src="https://himatifusu.org/img/logo/white/white_100.png" className="w-14 h-14" />
+                            <motion.img whileHover={{ scale: 1.2 }} whileTap={{ scale: 1.1 }} src="https://himatifusu.org/img/logo/white/white_100.png" className="w-14 h-14" />
                         </a>
                         <div id="navbarCollapse" className={`absolute top-full left-0 right-0 w-full rounded-lg p-6 lg:p-0 z-10 bg-white lg:bg-transparent lg:basis-full lg:static lg:block lg:w-full lg:max-w-full ${!open && "hidden"} `}>
                             <ul className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-end whitespace-nowrap">

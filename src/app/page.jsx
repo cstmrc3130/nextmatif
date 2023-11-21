@@ -1,9 +1,12 @@
 import Navbar from "./components/Navbar"
 import Footer from "./components/Footer"
 import Divisions from "./components/Divisions";
+import Sejarah from "./components/Sejarah"
+import Visi from "./components/Visi";
 import { Suspense } from "react";
 import Loader from "./components/SkeletonSwiper";
 import UserList from "@/data/UserList";
+import { AnimatePresence } from "framer-motion";
 
 
 export default async function Home()
@@ -11,7 +14,7 @@ export default async function Home()
     return (
         <main>
             <img src={`./hero-bg.jpg`} className={`-z-10 object-cover fixed w-screen h-screen opacity-100 brightness-50 bg-blend-darken`} />
-
+        
             <Navbar />
 
             <section id={"hero"} className="text-white relative z-0 h-screen container mx-auto px-4 py-8 sm:py-12 sm:px-6 lg:py-16 lg:px-8" >
@@ -212,6 +215,12 @@ export default async function Home()
                             </p>
                         </a>
                     </div> */}
+            </section>
+            <section id={"sejarah"} className="relative z-0 h-screen container m-0 px-0 py-0 sm:py-0 sm:px-0 lg:py-0 lg:px-0 bg-white" >
+                <Sejarah />
+            </section>
+            <section id={"visi"} className="relative z-0 h-screen container m-0 px-0 py-0 sm:py-0 sm:px-0 lg:py-0 lg:px-0 bg-white" >
+                <Visi />
             </section>
 
             <section id={"divisions"} className="relative z-0 h-screen container mx-auto px-4 py-8 sm:py-12 sm:px-6 lg:py-16 lg:px-8" >
