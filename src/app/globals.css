@@ -2,12 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+*
+{
+    scroll-behavior: smooth;
+}
 
-
+/* 
 .swiper-wrapper
 {
-    /* transition-timing-function: linear !important; */
-}
+    transition-timing-function: linear !important;
+} */
 
 .swiper
 {
@@ -19,25 +23,31 @@ header
     animation: slidesDown 1.75s;
 }
 
-@keyframes slidesDown {
-    from{
+@keyframes slidesDown
+{
+    from
+    {
         opacity: 0;
         transform: translateY(-50px);
     }
 
-    to{
+    to
+    {
         opacity: 1;
         transform: translateY(0px);
     }
 }
 
-@keyframes slidesUp {
-    from{
+@keyframes slidesUp
+{
+    from
+    {
         opacity: 0;
         transform: translateY(50px);
     }
 
-    to{
+    to
+    {
         opacity: 1;
         transform: translateY(0px);
     }
