@@ -80,7 +80,7 @@ export default function Navbar()
     return (
         <>
             <div className={`fixed z-10 inset-0 h-screen w-full backdrop-blur-sm lg:hidden ${!open && `hidden`}`}></div>
-            <header ref={navbarRef} className={`flex fixed z-20 items-center justify-center w-full pt-5 pb-3 transition-all duration-500 rounded-b-md`}>
+            <header ref={navbarRef} className={`flex fixed z-20 items-center justify-center w-full pt-5 pb-3 transition-all duration-500`}>
                 <nav className="container">
                     <div className="relative flex items-center justify-between mx-4 lg:mx-20">
                         <a href="/" className="block">
